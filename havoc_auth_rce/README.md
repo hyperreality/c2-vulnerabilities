@@ -1,8 +1,8 @@
 # Havoc RCE
 
-Havoc is vulnerable to command injection enabling an authenticated user to execute commands on the Teamserver. Affects versions 0.3 up to the latest release 0.6.
+Havoc is vulnerable to command injection enabling an authenticated user to execute commands on the Teamserver. Affects versions 0.3 up to the latest release 0.6. Havoc's default profile contains hardcoded passwords, so a C2 operator careless enough to use the default profile on a public network can immediately be exploited.
 
-![](demo.png)
+![](poc.gif)
 
 The Havoc Teamserver can compile custom agents on behalf of users. The [builder code](https://github.com/HavocFramework/Havoc/blob/ea3646e055eb1612dcc956130fd632029dbf0b86/teamserver/pkg/common/builder/builder.go) eventually passes the full compilation options to an `exec.Command()` [invocation of `sh -c`](https://github.com/HavocFramework/Havoc/blob/ea3646e055eb1612dcc956130fd632029dbf0b86/teamserver/pkg/common/builder/builder.go#L1066). Input options are sanitized, apart from the ["Service Name" field](https://github.com/HavocFramework/Havoc/blob/ea3646e055eb1612dcc956130fd632029dbf0b86/teamserver/pkg/common/builder/builder.go#L617) when generating service binaries.
 

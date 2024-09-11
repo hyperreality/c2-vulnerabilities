@@ -1,15 +1,14 @@
 import hashlib
 import json
 import ssl
-from websocket import create_connection
+from websocket import create_connection # pip install websocket-client
 
-HOSTNAME = "0.0.0.0"
+HOSTNAME = "192.168.167.129"
 PORT = 40056
 USER = "Neo"
 PASSWORD = "password1234"
 
 ws = create_connection(f"wss://{HOSTNAME}:{PORT}/havoc/",
-                       http_proxy_host='127.0.0.1', http_proxy_port=8080,
                        sslopt={"cert_reqs": ssl.CERT_NONE, "check_hostname": False})
 
 payload = {"Body": {"Info": {"Password": hashlib.sha3_256(PASSWORD.encode()).hexdigest(), "User": USER}, "SubEvent": 3}, "Head": {"Event": 1, "OneTime": "", "Time": "18:40:17", "User": "Neo"}}

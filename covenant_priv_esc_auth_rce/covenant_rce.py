@@ -7,8 +7,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 SERVER_URL = "192.168.0.227"
 COVENANT_PORT = 7443
-USERNAME = "bla"
-PASSWORD = "bla"
+USERNAME = "hyper"
+PASSWORD = "admin"
 
 with open('./ShellcodeAssembly.dll', 'rb') as f:
     base64exploit = base64.b64encode(f.read()).decode()
